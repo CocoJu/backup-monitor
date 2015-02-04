@@ -1,0 +1,10 @@
+<project basedir="." name="bmonitor" default="CreateJar">
+	<target name="CreateJar" description="Create Jar file">
+	  	<jar destfile="\\mainoffice\bmon$\bmonitor.jar"
+	     basedir=".\bin">
+	     	<manifest>
+	      		<attribute name="Main-Class" value="pc.bmonitor.Main"/>
+	    	</manifest>
+		</jar>
+	</target>
+</project>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<host name="main_polet">
+		<dir name="D:\1Cv7\BackUP\1\">
+			<trackedfile>angio.zip</trackedfile>
+			<trackedfile>Autokargo.zip</trackedfile>
+			<trackedfile>autsorsing.zip</trackedfile>
+			<trackedfile>Holding_pb2013.zip</trackedfile>
+			<trackedfile>ZRP_finaut.zip</trackedfile>
+			<trackedfile>ZRP_angio.zip</trackedfile>
+		</dir>
+	</host>
+	<host name="mainoffice">
+		<dir name="D:\1Cv7\BackUp\1\">
+			<trackedfile>holding_ewm.zip</trackedfile>
+			<trackedfile>Holding_main2013.zip</trackedfile>
+		</dir>
+	</host>
+	<host name="172.16.8.101">
+		<dir name="D:\backup\remote\1cv77\last\">
+			<trackedfile>zik_lpk*.[.]zip</trackedfile>
+		</dir>
+	</host>
+	<host name="172.16.1.102">
+		<dir name="C:\1Cv7\BackUp\1\">
+			<trackedfile>Holding_base2013.zip</trackedfile>
+		</dir>
+	</host>
+	<!-- <echofile file="D:\scripts\base_seq\sr_base.txt"/>
+	<echofile file="D:\scripts\base_seq\sr_office.txt"/>
+	<echofile file="D:\scripts\base_seq\sr_polet.txt"/> -->
+</root>
+<!--	<echofile file=".\sr_short_base.txt"/> -->

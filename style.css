@@ -1,0 +1,66 @@
+body{
+	
+}
+ul > li > ul > li{
+	list-style-type: none;
+	font-size:12px;
+}
+.errorLog{
+	background-color:#ffcabd;
+	border:solid 1px #f80000;
+	margin: auto;
+	padding:10px;
+	border-radius: 5px;
+	width: 700px;
+}
+.main{
+	width: 800px;
+	margin: auto;
+	margin-top: 50px;
+	
+	
+	padding:10px 0 10px 0;
+	
+}
+.backup_unit{
+	width: 700px;
+	margin: auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border:1px solid #BCC3CE;
+	padding:10px;
+	background:#F2F2F2;
+}
+.sequence_db{
+	width: 700px;
+	margin: auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border:1px solid #BCC3CE;
+	
+	background:#F2F2F2;
+	padding:10px;
+	font:0.9em Arial,Helvetica,sans-serif;
+}
+.header{
+	font: 1.3em Arial,Helvetica,sans-serif;
+	color: #0D44A0;
+}
+
+.list_files{
+	//background-color:#c7c7ff;
+	background-color:#dcd0ff;
+	border:solid 1px #b89eff;
+	padding: 10px;
+	margin: 10px;
+	font: 1em Arial,Helvetica,sans-serif;
+	border-radius: 5px;
+}
+
+.untracked_f{
+	background-color:#ffcabd;
+	border:solid 1px #f80000;
+	margin: 10px;
+	padding:10px;
+	border-radius: 5px;
+}
