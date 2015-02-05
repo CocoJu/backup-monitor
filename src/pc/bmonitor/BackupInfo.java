@@ -10,14 +10,14 @@ import java.util.Set;
 import java.util.regex.Pattern;
 import static pc.bmonitor.UtilSupport.pythonDateToJava;
 
-public class BackupFactory {
+public class BackupInfo {
 	
 	private LinkedHashMap<String,String[]> trackedFiles;
 	private String HostName;
 	private LinkedHashMap<String, DirContainer> dirThithFileInfo;
 	
 	
-	public BackupFactory(String[] sArray, LinkedHashMap<String,String[]> lhMap) {
+	public BackupInfo(String[] sArray, LinkedHashMap<String,String[]> lhMap) {
 		trackedFiles = lhMap;
 		String hostN = "^Hostname:.*";
 		String dirN = "^Dir:.*";
@@ -34,7 +34,7 @@ public class BackupFactory {
 				key = s.replaceAll("^Dir:", "");
 				dirs.put(
 						key, 
-						new DirContainer( key, new ArrayList<BackupFactory.FileInfo>() )
+						new DirContainer( key, new ArrayList<BackupInfo.FileInfo>() )
 							);
 				continue;
 			}
@@ -54,38 +54,38 @@ public class BackupFactory {
 		}
 		dirThithFileInfo = dirs;
 	}
-	
+
 	public class DirContainer{
-		
+
 		private String dirname;
-		private ArrayList<BackupFactory.FileInfo> fInfo;
-		
+		private ArrayList<BackupInfo.FileInfo> fInfo;
+
 		public String getDirname() {
 			return dirname;
 		}
-		
-		public ArrayList<BackupFactory.FileInfo> getfInfo() {
+
+		public ArrayList<BackupInfo.FileInfo> getfInfo() {
 			return fInfo;
 		}
-		
-		public DirContainer(String dname, ArrayList<BackupFactory.FileInfo> listFiles ) {
+
+		public DirContainer(String dname, ArrayList<BackupInfo.FileInfo> listFiles ) {
 			dirname = dname;
 			fInfo = listFiles;
 		}
 	}
-	
+
 	public class FileInfo{
-		
+
 		private Date date;
 		private String path;
 		private long size;
-		
+
 		protected FileInfo(String pathArg, Date dateArg, long sizeArg) {
 			path = pathArg;
 			date = dateArg;
 			size = sizeArg;
 		}
-		
+
 		protected String getPath() {
 			return path;
 		}
@@ -99,7 +99,7 @@ public class BackupFactory {
 		}
 		
 	}
-	
+
 	public ArrayList<String> trackFiles(){
 		ArrayList<String> noTracketFiles = new ArrayList<String>();
 		Set<String> dirSet = trackedFiles.keySet();
@@ -129,7 +129,7 @@ public class BackupFactory {
 		}
 		return noTracketFiles.size()==0 ? null : noTracketFiles;
 	}
-	
+
 	public ArrayList<String> getFilesOfDir(String dirKey){
 		DirContainer dContainer = dirThithFileInfo.get(dirKey);
 		ArrayList<String> arr = new ArrayList<String>();
@@ -142,7 +142,7 @@ public class BackupFactory {
 	public Map<String, DirContainer> getBackups() {
 		return dirThithFileInfo;
 	}
-	
+
 	public String getHostName() {
 		return HostName;
 	}

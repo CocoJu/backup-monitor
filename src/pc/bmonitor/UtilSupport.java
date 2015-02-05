@@ -14,12 +14,12 @@ public class UtilSupport {
 	
 	public static String humanReadableByteCount(long bytes) {
 		long unit = 1024;
-	    if (bytes < unit) return bytes + " B";
-	    int exp = (int) (Math.log(bytes) / Math.log(unit));
-	    String pre = "kMGTPE".charAt(exp-1) + "";
-	    return String.format("%.1f %sB", bytes / Math.pow(unit, exp), pre);
+		if (bytes < unit) return bytes + " B";
+		int exp = (int) (Math.log(bytes) / Math.log(unit));
+		String pre = "kMGTPE".charAt(exp-1) + "";
+		return String.format("%.1f %sB", bytes / Math.pow(unit, exp), pre);
 	}
-	
+
 	public static StringBuffer readFileToBuffer(String filename , String splitter, String codeCharachter) throws IOException{
 		StringBuffer sbuff = new StringBuffer();
 		InputStreamReader reader = new InputStreamReader(new FileInputStream(filename), codeCharachter);

@@ -15,32 +15,35 @@ public class HttpResponse {
 	private String body;            
 	private List<String> trackedFls;
 	private List<String> echoFls;
+	private StringBuffer errLog;
 	
-	public HttpResponse(ArrayList<BackupFactory> arrBackups , List<String> echoFiles, StringBuffer errorLog) throws IOException {
-		echoFls = echoFiles;
-		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy hh:mm");
-		css = new StringBuffer();
-		dynContent = new StringBuilder();
-		css = UtilSupport.readFileToBuffer("style.css", null, "utf-8");
-		if(errorLog.length()!=0){
-			dynContent.append("<div class=\"errorLog\">")
-				.append(errorLog)
-			.append("</div>");
-		}
-		if(!(echoFiles == null)){
+	private void echoFilesBlock() throws IOException{
+		if(!(echoFls == null)){
 			for(String s:echoFls){
 				dynContent.append("<div class=\"sequence_db\">")
 					.append("<a class=\"header\">" + s +"</a></br></br>")					
 					.append(UtilSupport.readFileToBuffer(s, "</br>","windows-1251"))
 				.append("</div>");
 			}
-		}		
-		for(BackupFactory backupInstance : arrBackups){
+		}
+	}
+	
+	private void errorBlock(){
+		if(errLog.length()!=0){
+			dynContent.append("<div class=\"errorLog\">")
+				.append(errLog)
+			.append("</div>");
+		}
+	}
+	
+	private void backupBlock(ArrayList<BackupInfo> arrayOfBackups){
+		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy hh:mm");
+		for(BackupInfo backupInstance : arrayOfBackups){
 			dynContent.append("<div class=\"backup_unit\">")
 				.append("<a class=\"header\">") 
 				.append("Hostname: " + backupInstance.getHostName())
 				.append("</a>");
-			Map<String, BackupFactory.DirContainer> mapBackup = backupInstance.getBackups();
+			Map<String, BackupInfo.DirContainer> mapBackup = backupInstance.getBackups();
 			Set<String> backupIterator = mapBackup.keySet();
 					for(String dir:backupIterator){
 						dynContent.append("<div class=\"list_files\">")
@@ -48,8 +51,8 @@ public class HttpResponse {
 							.append(dir)
 							.append("</a>")
 							.append("<ul>");
-						ArrayList<BackupFactory.FileInfo> fileArray = mapBackup.get(dir).getfInfo();
-						for(BackupFactory.FileInfo fileInstance:fileArray){
+						ArrayList<BackupInfo.FileInfo> fileArray = mapBackup.get(dir).getfInfo();
+						for(BackupInfo.FileInfo fileInstance:fileArray){
 							dynContent.append("<li>")
 								.append(fileInstance.getPath())
 								.append("<ul><li>")
@@ -79,6 +82,25 @@ public class HttpResponse {
 							.append("</div>");
 					}
 			dynContent.append("</div>");
+		}
+	}
+	
+	public HttpResponse(String requestURI,
+							ArrayList<BackupInfo> arrBackups , 
+								List<String> echoFiles, 
+									StringBuffer errorLog) throws IOException {
+		errLog = errorLog;
+		echoFls = echoFiles;
+		css = new StringBuffer();
+		dynContent = new StringBuilder();
+		css = UtilSupport.readFileToBuffer("style.css", null, "utf-8");
+		
+		if(requestURI.equals("/")){
+			echoFilesBlock();
+		}else if(requestURI.equals("/admin")){
+			errorBlock();
+			echoFilesBlock();
+			backupBlock(arrBackups);
 		}
 		
 		body =		 "<!DOCTYPE html>" +
