@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>	
-	<host name="ddlocalhosset">
+	<host name="TrackedHost">
 		<dir name="D:\">
-			<trackedfile>pokazateli_podlej_raskritiu_s9_14.pdf</trackedfile>
+			<trackedfile>trackedfile.file</trackedfile>
 		</dir>
 	</host>
-	<echofile file="sr_short_base.txt"/>
+	<host name="TrackedHost2">
+		<dir name="D:\">
+			<trackedfile>trackedfile.file</trackedfile>
+			<trackedfile>trackedfile2.file</trackedfile>
+		</dir>
+		<dir name="C:\">
+			<trackedfile>trackedfile.file</trackedfile>
+		</dir>
+	</host>
+	<echofile file="C:\info.txt"/>
 </root>

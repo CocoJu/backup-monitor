@@ -1,10 +1,11 @@
-body{
-	
+body{	
 }
+
 ul > li > ul > li{
 	list-style-type: none;
 	font-size:12px;
 }
+
 .errorLog{
 	background-color:#ffcabd;
 	border:solid 1px #f80000;
@@ -13,15 +14,14 @@ ul > li > ul > li{
 	border-radius: 5px;
 	width: 700px;
 }
+
 .main{
 	width: 800px;
 	margin: auto;
-	margin-top: 50px;
-	
-	
-	padding:10px 0 10px 0;
-	
+	margin-top: 50px;	
+	padding:10px 0 10px 0;	
 }
+
 .backup_unit{
 	width: 700px;
 	margin: auto;
@@ -31,17 +31,18 @@ ul > li > ul > li{
 	padding:10px;
 	background:#F2F2F2;
 }
+
 .sequence_db{
 	width: 700px;
 	margin: auto;
 	margin-top: 10px;
 	margin-bottom: 10px;
-	border:1px solid #BCC3CE;
-	
+	border:1px solid #BCC3CE;	
 	background:#F2F2F2;
 	padding:10px;
 	font:0.9em Arial,Helvetica,sans-serif;
 }
+
 .header{
 	font: 1.3em Arial,Helvetica,sans-serif;
 	color: #0D44A0;
